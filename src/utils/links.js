@@ -23,7 +23,12 @@ export function makeLinks(items, no_loading=false) {
             link.setAttribute('href', lnk)
 
             img.classList.add('quicklink-icon')
-            img.setAttribute('src', 'https://cdn.bowser65.xyz/i/web.png')
+            img.setAttribute(
+              "src",
+              `https://besticon-demo.herokuapp.com/icon?url=${encodeURIComponent(
+                lnk.replace(/^(?:https?:\/\/)?/i, "")
+              )}&size=30`
+            );
 
             txt.classList.add('quicklink-txt')
             txt.innerText = lnk
@@ -31,12 +36,6 @@ export function makeLinks(items, no_loading=false) {
             link.appendChild(img)
             link.appendChild(txt)
             document.getElementById('quicklinks').appendChild(link)
-
-            const resp = await fetch(`https://api.bowser65.xyz/favicon/${encodeURIComponent(lnk)}`)
-              const json = await resp.json()
-              if (json.icon) {
-                img.setAttribute('src', json.icon)
-              }
             }, i * 200)
           }
         })(links[i])
