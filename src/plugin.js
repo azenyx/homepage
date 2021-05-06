@@ -1,9 +1,9 @@
 import { getWeather } from "./utils/weather.js"
 import { makeLinks } from "./utils/links.js"
 import { searchengine } from "./utils/lists.js"
-import { runTerminal } from "./utils/terminal.js"
 import { timeInHex } from "./utils/timeManager.js"
 import { runClock, backgroundElement } from "./_main.js"
+import { append_css_theme, theme_terminal } from "./utils/themes.js"
 
 import moment from 'moment/min/moment-with-locales'
 
@@ -13,7 +13,7 @@ chrome.storage.local.get({
   language: "",
   custombg: "",
   customfont: "",
-  terminal: false,
+  themes: "default",
   customfontgoogle: false,
   engines: "google",
   wkey: "",
@@ -55,10 +55,14 @@ chrome.storage.local.get({
     timeInHex()
   }
 
-  if (items.terminal) {
-    if (items.hexbg || !items.custombg.length) { backgroundElement.src = "" }
-    if (items.customfont) { document.body.style.fontFamily = null; }
-    runTerminal()
+  // Theme chooser
+  switch (items.themes) {
+    case "terminal":
+      theme_terminal(items, backgroundElement)
+      append_css_theme("terminal")
+      break
+    default:
+      // Fucking nerd wants default theme, boring
   }
 
   if (items.engines !== "google") {

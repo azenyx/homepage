@@ -6,8 +6,8 @@
 
 /* Animation */
 @keyframes enter-page {
-  from { transform: translate(-50%, 40%); opacity: 0; }
-  100% { transform: translate(-50%, -50%); opacity: 1; }
+  from { transform: translate(0, 50%); opacity: 0; }
+  100% { transform: translate(0, 0); opacity: 1; }
 }
 
 @keyframes enter-weather {
@@ -39,6 +39,7 @@ body {
 .center-object { animation: enter-page 1s ease-in-out; }
 
 /* Background */
+.dark-theme .fullscreen { background: transparent; }
 .fullscreen .center-object { position: fixed; }
 #js-bg {
   left: 0;
@@ -55,7 +56,7 @@ body {
 
 /* Clock */
 .time {
-  font-size: 13vmin;
+  font-size: 10vmin;
   margin: 0;
   transition: all .5s ease;
 }
@@ -174,7 +175,7 @@ a#install-button { color: #fff; }
 }
 
 .wtext-container * {
-  margin: -7px;
+  margin: 0;
   font-size: 20px;
   font-weight: 400;
 }
@@ -186,7 +187,7 @@ a#install-button { color: #fff; }
   width: 72px;
 }
 
-#wtime-container { margin-top: .4em; }
+#wtime-container { margin-top: 1.5em; }
 #wtime-container .wdiff {
   align-items: center;
   display: flex;
@@ -224,6 +225,7 @@ a#install-button { color: #fff; }
   font-size: 18px;
   margin-bottom: 0;
   margin-left: .4em;
+  margin-top: -2px;
 }
 
 .wdiff .icon {

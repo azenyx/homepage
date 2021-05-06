@@ -6,7 +6,7 @@ function save_options() {
   var customfont = document.getElementById('customfont').value
   var customfontgoogle = document.getElementById('customfontgoogle').checked
   var no_seconds = document.getElementById('no_seconds').checked
-  var terminal = document.getElementById('terminal').checked
+  var themes = document.getElementById('homepage_themes').value
   var hexbg = document.getElementById('hexbg').checked
   var engines = document.getElementById('engines').value
   var wkey = document.getElementById('wkey').value
@@ -30,7 +30,7 @@ function save_options() {
     customfont: customfont,
     no_seconds: no_seconds,
     customfontgoogle: customfontgoogle,
-    terminal: terminal,
+    themes: themes,
     engines: engines,
     wkey: wkey,
     w3hours: w3hours,
@@ -45,7 +45,7 @@ function save_options() {
     // Update status to let user know options were saved.
     var modal = document.getElementById('modal')
     var modaltarget = document.getElementsByClassName('modal')[0]
-    modal.style.display = "block"
+    modal.style.display = "flex"
     modaltarget.classList.remove('modal--close')
     setTimeout(function() {
       modaltarget.classList.add('modal--close')
@@ -61,7 +61,7 @@ function restore_options() {
     language: "",
     custombg: [],
     customfont: "",
-    terminal: false,
+    themes: "default",
     no_seconds: false,
     customfontgoogle: false,
     engines: "google",
@@ -77,7 +77,7 @@ function restore_options() {
   }, function(items) {
     document.getElementById('language').value = items.language
     document.getElementById('customfont').value = items.customfont
-    document.getElementById('terminal').checked = items.terminal
+    document.getElementById('homepage_themes').value = items.themes
     document.getElementById('no_seconds').checked = items.no_seconds
     document.getElementById('customfontgoogle').checked = items.customfontgoogle
     document.getElementById('hexbg').checked = items.hexbg
@@ -100,8 +100,17 @@ function restore_options() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  var languages = moment.locales()
-  var wlanguages = {
+  // Clock languages
+  const languages = moment.locales()
+  for (var i = 0; i < languages.length; i++) {
+    var option = document.createElement("option")
+    option.text = languages[i]
+    option.value = languages[i]
+    document.getElementById("language").appendChild(option)
+  }
+
+  // Weather languages
+  const wlanguages = {
     "ar": "Arabic", "bg": "Bulgarian", "ca": "Catalan", "cz": "Czech",
     "de": "German", "el": "Greek", "fa": "Persian (Farsi)", "fi": "Finnish",
     "fr": "French", "gl": "Galician", "hr": "Croatian", "hu": "Hungarian",
@@ -113,20 +122,22 @@ document.addEventListener('DOMContentLoaded', function() {
     "zh_tw": "Chinese Traditional"
   }
 
-  // Clock languages
-  for (var i = 0; i < languages.length; i++) {
-    var option = document.createElement("option")
-    option.text = languages[i]
-    option.value = languages[i]
-    document.getElementById("language").appendChild(option)
-  }
-
-  // Weather languages
   for (var g in wlanguages) {
     var option2 = document.createElement("option")
     option2.text = wlanguages[g]
     option2.value = g
     document.getElementById("wlanguage").appendChild(option2)
+  }
+
+  // Homepage themes
+  const homepage_themes = [
+    "default", "terminal"
+  ]
+  for (var t in homepage_themes) {
+    var option_theme = document.createElement("option")
+    option_theme.text = homepage_themes[t]
+    option_theme.value = homepage_themes[t]
+    document.getElementById("homepage_themes").appendChild(option_theme)
   }
 })
 

@@ -25,6 +25,9 @@ Do you need more help? Visit my server here: **https://discord.gg/DpxkY3x**
 - NodeJS
 - Python 3.6 or up
 
+### Compiling JS code
+npm run dev
+
 ### Credits
 - [AlexFlipnote](https://github.com/AlexFlipnote): Main developer
 - [Bowser65](https://github.com/Bowser65): Making some nice features to the homepage project like shortcuts.

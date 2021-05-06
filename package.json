@@ -2,6 +2,9 @@
   "name": "alexflipnote_homepage",
   "author": "AlexFlipnote",
   "homepage": "https://alexflipnote.dev/homepage/",
+  "scripts": {
+    "dev": "rollup -c -w"
+  },
   "dependencies": {
     "jshint": "^2.10.3",
     "moment": "^2.29.1",

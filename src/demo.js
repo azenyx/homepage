@@ -44,27 +44,6 @@ document.getElementById('nosearch').onclick = function() {
   turnSwitch(search)
 }
 
-// Turn on/off terminal view
-document.getElementById('terminal').onclick = function() {
-  var body = document.getElementById("body")
-  var me = document.getElementById("terminal-me")
-  var background = document.getElementById("js-bg")
-  var search_form = document.getElementById("formsearch")
-
-  if (body.classList.contains("terminal")) {
-    body.classList.remove("terminal")
-    background.style.opacity = "1"
-    me.style.display = "none"
-    me.style.background = null
-  } else {
-    body.classList.add("terminal")
-    background.style.opacity = "0"
-    me.style.display = "block"
-    me.innerText = `${getBrowser()}@homepage:~$ now --watch`
-    search_form.style.display = "none"
-  }
-}
-
 // Turn on/off weather
 document.getElementById('weather').onclick = function() {
   var search = document.getElementById('wcontainer')
