@@ -10,11 +10,18 @@ export function runClock() {
   updateDateAndTime()
 
   // Set background to a random one
-  var selected = Math.floor(Math.random() * 31)
+  var selected = Math.floor(Math.random() * 25)
 
   backgroundElement.onload = function () {
     backgroundElement.style.opacity = 1
   }
+
+  const fs = require('fs');
+  const dir = './directory';
+
+  fs.readdir(dir, (err, files) => {
+    console.log();
+  });
 
   // Finally put the last touch on demo page
   document.addEventListener('DOMContentLoaded', function() {
