@@ -10,7 +10,7 @@ export function runClock() {
   updateDateAndTime()
 
   // Set background to a random one
-  var selected = Math.floor(Math.random() * 25)
+  var selected = Math.floor(Math.random() * 31)
 
   backgroundElement.onload = function () {
     backgroundElement.style.opacity = 1
